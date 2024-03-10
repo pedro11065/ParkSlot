@@ -13,14 +13,16 @@ A "interface" do programa deve ser de fácil compreenção para leigos que irão
 """
 import sys
 import os
+
 car_id = []
 car_list = []
 hour_list = []
 
 while True:
 
-    def data():#entrada básica
+    def data():#entrada dos comandos
         while True:
+            
             tarefa = input("O que você deseja fazer?\n(e)ntrada\n(s)aida \n(l)istar\ndigite: ")
             
             if tarefa == "e":
@@ -37,12 +39,13 @@ while True:
 
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
-                print("Digite um comando válido")
+                print("Digite um comando válido #001")
                 continue
 
             return job, job_name
 
     def call(data_data):#faz os comandos funcionarem
+
         if data_data[0] == 1:
             entry(data_data)
 
@@ -54,49 +57,76 @@ while True:
 
     def entry(data_data): #entrada
         
-        job = data_data[0]
-        job_name = data_data[1]
-        hour_true = 0
+        job = data_data[0] ; job_name = data_data[1] ; hour_true = 0
 
         os.system('cls' if os.name == 'nt' else 'clear')
+
         print(f"\ncomando: {job_name}\n")
         
         if job == 1:
             
             car_in = input("Digite a placa do carro:\n")
-            
-            contLetra = 0
-            contNum = 0
-            #verificar placa
+            contLetra = 0 ;  contNum = 0
+
             if len(car_in) == 7:
+                
                 for i, item in enumerate(car_in):
-                    #verificar as letras, se existem e se estão nas posições certas
+
                     if item.isalpha() and (i == 0 or i == 1 or i == 2 or i ==4):
                         contLetra += 1
-                    elif item.isdigit() and (i == 3 or i == 4 or i == 5 or i == 6):
+
+                    elif item.isdigit() and (i == 3 or i == 4 or i == 5 or i == 6):                      
                         contNum += 1
                         
-            if (contLetra == 3 and contNum == 4) or (contLetra == 4 and contNum == 3):      
-                car_list.append(car_in)
-                hour_true = 1
-                
-            if hour_true == 1:
+                if (contLetra == 3 and contNum == 4) or (contLetra == 4 and contNum == 3):    
 
-                hour_in = int(input("\nQue horas são?(ex:1303 = 13h03):\n"))
-                hour_list.append(hour_in)
+                    car_list.append(car_in)
+                    hour_true = 1
+                    
+                    if hour_true == 1:
 
-                os.system('cls' if os.name == 'nt' else 'clear')
-                print("Dados registrados.")
-                hour_true == 0
-                
+                        hour_in = input("\nQue horas são?(ex:1303 = 13h03):\n")
+
+                        if len(hour_in) == 4:
+
+                            try:
+                                hour_in = int(hour_in)
+                                true_hour = True
+
+                            except:
+                                true_hour = False
+
+                            if hour_in <= 2359:
+
+                                if true_hour == True:
+                                    hour_list.append(hour_in)
+
+                                    os.system('cls' if os.name == 'nt' else 'clear')
+                                    print("Dados registrados com sucesso.")
+                                    hour_true == 0
+
+                                else:
+                                    os.system('cls' if os.name == 'nt' else 'clear')                                                       
+                                    print("Horário invalido, por favor tente novamente. $203 \n")
+
+                            else:
+                                os.system('cls' if os.name == 'nt' else 'clear')  
+                                print("Horário invalido, por favor tente novamente. #202 \n")
+                        else:
+                            os.system('cls' if os.name == 'nt' else 'clear')  
+                            print("Horário invalido, por favor tente novamente. #201 \n")
+                    else:
+                        os.system('cls' if os.name == 'nt' else 'clear')        
+                        print("Placa invalida, por favor digite novamente. #103 \n")
+                else:
+                    os.system('cls' if os.name == 'nt' else 'clear')   
+                    print("Placa inválida, por favor digite novamente. #102 \n")
             else:
-                os.system('cls' if os.name == 'nt' else 'clear')
-                print(f"\ncomando: {job_name}\n")
-                
-                print("Placa invalida, por favor digite novamente.\n")
+                os.system('cls' if os.name == 'nt' else 'clear')   
+                print("Placa invalida, por favor digite novamente. #101\n")   
         else:
-            print("Error entrada")
-            #adicionar returns
+            os.system('cls' if os.name == 'nt' else 'clear')   
+            print("Error entrada #100")
 
     def exit(data_data): #saida
         
@@ -108,31 +138,45 @@ while True:
             print(f"\ncomando: {job_name}\n")
             
             if car_list != []:
-                #depois de criar as funções, chamar a lista
                 list(data_data)
-                
-                out_car = input("Qual é a placa do carro?(minúsculo)")
-                out_hour = int(input("Que horas são? (ex:1303 = 13h03):\n"))
+                out_car = input("Qual é a placa do carro que vai sair?")
+                out_car.upper()
 
-                i_car = car_list.index(out_car) #indice dessa placa na lista
-                i_hour = i_car
-                
-                value_simple = (out_hour - hour_list[i_hour]) / 100
-                value5 = (value_simple - (value_simple - 1)) * 5
-                value3 = (value_simple - 1) * 3
-                value_final = value5 + value3
+                if out_car in car_list:
+                    out_hour = input("Que horas são? (ex:1303 = 13h03):\n")                 
+                    try:
+                        out_hour = int(out_hour)
+                        true_hour = True
+                    except:
+                        true_hour = False 
 
-                print(f"""\nO carro da placa {car_list[i_car]} ficou o total de {value_simple} horas no estacionamento.\n
-                O valor a ser pago é de:R${value_final:.2}\n""")
+                    if true_hour == True:                       
+                        i_car = car_list.index(out_car) #indice dessa placa na lista
+                        i_hour = i_car
+                            
+                        value_simple = (out_hour - hour_list[i_hour]) / 100
+                        value5 = (value_simple - (value_simple - 1)) * 5
+                        value3 = (value_simple - 1) * 3
+                        value_final = value5 + value3
 
-                del car_list[i_car]
-                del hour_list[i_hour]
+                        print(f"""\nO carro da placa {car_list[i_car]} ficou o total de {value_simple} horas no estacionamento.\n
+                        O valor a ser pago é de:R${value_final}\n""")
+
+                        del car_list[i_car]
+                        del hour_list[i_hour]
+                    else:
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        print("horário inválido, tente novamente. #303")
+                else:
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    print("Placa não está registrada no sistema ou é invalida, tente novamente. #302")
             else:
-                print("Não há nenhum carro registrado no estacionamento.\n")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print("Não há nenhum carro registrado no sistema. #301\n")
             
         else:
             print("Error exit")
-        
+         
         #adicionar returns
 
     def list(data_data): #listar
@@ -145,16 +189,14 @@ while True:
             print(f"\ncomando: {job_name}\n")
             
             if car_list != []:
-                i_num = 0
-                hour = hour_list[i_num]
-            
+                i_num = 0 ; hour = hour_list[i_num]
                 print("ID   Placa   Chegada")
                 for car in car_list:
                     print(f"{i_num}...{car.upper()}...{hour}")
                     i_num += 1
                 print("\n")
             else:      
-                print("Não há nenhum carro registrado no estacionamento para ser listado.\n")
+                print("Não há nenhum carro registrado no sistema para ser listado. $401\n")
         
         else:
             i_num = 0
@@ -166,8 +208,5 @@ while True:
             print("\n")
 
     data_data = data()
-
-    #print(data_data[0])#1 = job
-    #print(data_data[1])#entrada = job_name
 
     call(data_data)
