@@ -1,5 +1,4 @@
 import psycopg2
-
 # Connection details
 conn = psycopg2.connect(
     host="your_host",
