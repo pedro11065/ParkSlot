@@ -22,8 +22,6 @@ def login_register():
             return host,database,user,password
     
         clean_terminal()
-    
-login_register()
         
         
 
