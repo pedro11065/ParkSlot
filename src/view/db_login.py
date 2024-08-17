@@ -1,10 +1,8 @@
 import sys
-import time
 
 sys.path.insert(1, 'parkslot/src/view')
 
 from functions.clear_terminal import clean_terminal
-
 
 def login_register():
     while(True):
