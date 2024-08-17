@@ -2,7 +2,7 @@ import sys
 
 sys.path.insert(1, 'parkslot/src/view')
 
-from functions.clear_terminal import clean_terminal
+from v_global_functions.clear_terminal import clean_terminal
 
 def login_register():
     while(True):
