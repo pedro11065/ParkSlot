@@ -1,10 +1,9 @@
-import sys
 
-sys.path.insert(1, 'parkslot/src/view')
-
-from v_global_functions.clear_terminal import clean_terminal
 
 def login_register():
+
+    from v_global_functions.clear_terminal import clean_terminal
+    
     while(True):
 
         print("--- Registrar servidor ---\n")
