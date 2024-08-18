@@ -19,10 +19,10 @@ from model.database.json_write import login_save
 from model.verification.menu_return import menu_return
 from model.verification.plate_return import plate_return
 
-from view.menu.historic import #historic
-from view.menu.delete import #delete
-from view.menu.Search import #search
-from view.menu.List import #list_
+# from view.menu.historic import historic
+# from view.menu.delete import delete
+# from view.menu.Search import search
+# from view.menu.List import list_
 from view.menu.menu import menu
 from view.menu.add import add
 
