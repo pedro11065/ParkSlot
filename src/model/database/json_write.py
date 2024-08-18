@@ -6,7 +6,7 @@ def login_save(db_login):
 
    data = {"last_login":
    {
-       "logged": 0,
+       "logged": 1,
        "host":f'"{db_login[0]}"',
        "database":f'"{db_login[1]}"',
        "user":f'"{db_login[2]}"',

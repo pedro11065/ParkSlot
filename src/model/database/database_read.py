@@ -1,26 +1,24 @@
 import psycopg2
+from json_read_cnn import json_read_cnn_db
 
-# Connection details
-conn = psycopg2.connect(
-    host="your_host",
-    database="your_database",
-    user="your_user",
-    password="your_password"
-)
+def db_read():
+    try:
+        db_login = json_read_cnn_db()
+        # Connection details
+        conn = psycopg2.connect(
+            host=db_login[0],
+            database=db_login[0],
+            user=db_login[0],
+            password=db_login[0]
+        )
+        cur = conn.cursor()
 
-# Create a cursor
-cur = conn.cursor()
+        cur.execute("SELECT id, placa, nomecliente, datachegada, horariochegada FROM parkslot_now")
 
-# Execute a query to fetch data
-cur.execute("SELECT column1, column2 FROM your_table_name")
+        db_data = cur.fetchall()
 
-# Fetch all results
-rows = cur.fetchall()
-
-# Print the results
-for row in rows:
-    print(row)
-
-# Close the cursor and connection
-cur.close()
-conn.close()
+        cur.close()
+        conn.close()
+    except:
+        return False
+    return True
