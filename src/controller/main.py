@@ -10,11 +10,12 @@ for root, dirs, files in os.walk(main_directory):
 
 def login_control():
 
-    from src.model.database.json_read import login_check 
-    from src.model.database.json_write import login_save
+    from model.database.json_read import login_check 
     from view.db_login import login_register
-
+    from model.database.json_write import login_save
+    
     if login_check() == False:
         db_login = login_register()
         login_save(db_login)
 
+login_control()

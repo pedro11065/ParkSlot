@@ -1,9 +1,1 @@
-{"last_login":
-    {
-        "logged": 0,
-        "host":"",
-        "database":"",
-        "user":"",
-        "password":""
-    }
-}
+{"last_login": {"logged": 0, "host": "\"localhost\"", "database": "\"parkslot\"", "user": "\"postgres\"", "password": "\"32372403\""}}
