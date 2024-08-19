@@ -11,7 +11,7 @@ for root, dirs, files in os.walk(main_directory):
 #--------------------------------------------------------
 
 from model.database.json_read import login_check 
-from view.connect.db_login import login_register
+from view.login.db_login import login_register
 from model.database.json_write import login_save
 
 #--------------------------------------------------------
@@ -26,7 +26,8 @@ from model.verification.plate_return import plate_return
 from view.menu.menu import menu
 from view.menu.add import add
 
-from view.errors.menu_error import menu_error
+from view.menu.errors.menu_error import menu_error
+from view.menu.msgs.add_success import add_success
 #--------------------------------------------------------
 
 def login_control():
@@ -48,7 +49,8 @@ def main():
 
         match job:
             case "0": #Add
-                plate_return(add())
+                if plate_return(add()):
+                    add_success()
             case "1":#Search
                 None
             case "2":#List

@@ -1,7 +1,9 @@
 def plate_return(plate):
 
-    if len(plate) == 7:   
-        for i, item in enumerate(plate):
+    plate_verify = plate[0]
+
+    if len(plate_verify) == 7:   
+        for i, item in enumerate(plate_verify):
 
             if item.isalpha() and (i == 0 or i == 1 or i == 2 or i ==4):
                 contLetter += 1
