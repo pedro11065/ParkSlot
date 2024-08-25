@@ -1,9 +1,9 @@
 import psycopg2
 
 
-def db_search():
+def db_search(search_data):
 
-    from json_db import json_db_read
+    from .json_db import json_db_read
 
     try:
         db_login = json_db_read()
@@ -16,7 +16,9 @@ def db_search():
         )
         cur = conn.cursor()
 
-        cur.execute("SELECT * WHERE 'placa' = 'placa'")
+        placa = search_data
+
+        cur.execute(f"SELECT * WHERE 'placa' = {placa}")
 
         db_data = cur.fetchall()
 

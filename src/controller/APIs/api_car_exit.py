@@ -1,10 +1,11 @@
 from flask import Blueprint, request, jsonify
-from src.model.entry.verification_entry import v_entry
-from ParkSlot.src.model.database.db_delete_car import db_delete
+from src.model.exit.verification_exit import v_exit
+from src.model.database.db_delete_car import db_delete
 
-api_car_exit = Blueprint('api_car_exit', __name__)
 
-@api_car_exit.route('/api/exit', methods=['POST'])
+api_car_exit = Blueprint('car_exit', __name__)
+
+@api_car_exit.route('/exit', methods=['POST'])
 def exit():
 
 #--------------------------------------------------------------------ENTRY

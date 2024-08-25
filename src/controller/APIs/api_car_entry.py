@@ -1,10 +1,10 @@
 from flask import Blueprint, request, jsonify
 from src.model.entry.verification_entry import v_entry
-from src.model.database.db_register_car import db_register_car
+from src.model.database.db_register_car import database_create
 
-api_car_entry = Blueprint('api_car_entry', __name__)
+api_car_entry = Blueprint('car_entry', __name__)
 
-@api_car_entry.route('/api/entry', methods=['POST'])
+@api_car_entry.route('/entry', methods=['POST'])
 def login():
 
 #--------------------------------------------------------------------ENTRY
@@ -13,15 +13,15 @@ def login():
 
 #--------------------------------------------------------------------PROCESS
 
-    data_v_entry = [car_data['placa'], car_data['nomecliente']]
+    car_data = [car_data['placa'], car_data['nomecliente']]
 
-    v_entry(data_v_entry) #verification_entry
+    data_v_entry = v_entry(car_data) #verification_entry
 
 #--------------------------------------------------------------------RETURN
 
     if data_v_entry == True:
 
-        db_register_car(data_v_entry)
+        database_create(car_data)
         return jsonify({"placa": "True"}), 200
     
     else:

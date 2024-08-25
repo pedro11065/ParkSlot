@@ -1,9 +1,11 @@
 
-def v_entry(data_v_entry):
+def v_entry(car_data):
 
-    def verification_plate(data_v_entry):
+    def verification_plate(car_data):
 
-        plate = plate[0]
+        plate = car_data[0]
+        contLetter = 0
+        contNum = 0
 
         if len(plate) == 7:   
             for i, item in enumerate(plate):
@@ -23,4 +25,6 @@ def v_entry(data_v_entry):
                 
         return False
     
-    verification_plate(data_v_entry)
+    if verification_plate(car_data):
+        return True
+    return False

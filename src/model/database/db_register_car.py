@@ -1,8 +1,8 @@
 import psycopg2
 
-def database_create(data_v_entry):
+def database_create(car_data):
    
-    from json_db import json_db_read
+    from .json_db import json_db_read
     from ..time import time_now
 
 
@@ -16,8 +16,8 @@ def database_create(data_v_entry):
             password=db_login[0]
         )
 
-        placa = data_v_entry[0]
-        nomecliente = data_v_entry[1]
+        placa = car_data[0]
+        nomecliente = car_data[1]
         datachegada = time_now()[0] 
         horariochegada = time_now()[1]
     
