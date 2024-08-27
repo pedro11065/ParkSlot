@@ -21,8 +21,11 @@ def login():
 
     if data_v_entry == True:
 
-        database_create(car_data)
-        return jsonify({"placa": "True"}), 200
+        if database_create(car_data):
+
+            return jsonify({"placa": "True","Server": "True"}), 200
+        
+        return jsonify({"placa": "True","Server": "False"}), 400
     
     else:
         

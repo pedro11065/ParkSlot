@@ -5,7 +5,7 @@ import json
 def json_db_read():
     
     # Facilmente substituível por um arquivo .env (o qual contem informações sensíveis do PROJETO, como TOKENS.)
-    file_path = "C:/github/ParkSlot/src/model/database/json_db.json"
+    file_path = "src/model/database/json_db.json"
 
     with open(file_path,"r") as file: #openning .json
         data = json.load(file)

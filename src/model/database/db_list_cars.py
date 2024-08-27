@@ -9,9 +9,9 @@ def db_list_cars():
 
         conn = psycopg2.connect(
             host=db_login[0],
-            database=db_login[0],
-            user=db_login[0],
-            password=db_login[0]
+            database=db_login[1],
+            user=db_login[2],
+            password=db_login[3]
         )
         cur = conn.cursor()
 
@@ -23,4 +23,4 @@ def db_list_cars():
         conn.close()
     except:
         return False
-    return True
+    return True, db_data

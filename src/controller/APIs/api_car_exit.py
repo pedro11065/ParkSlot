@@ -16,16 +16,13 @@ def exit():
 
     data_v_exit = [car_data['placa'], car_data['nomecliente']]
 
-    v_exit(data_v_exit) #verification_entry
+    exit = v_exit(data_v_exit) #verification_exit
 
 #--------------------------------------------------------------------RETURN
-
-    if data_v_exit == True:
-
-        db_delete(data_v_exit)
-        return jsonify({"placa": "True"}), 200
     
-    else:
+    if exit == False:
         
         return jsonify({"placa": "False"}), 400
-
+    
+    db_delete(exit)
+    return jsonify({"Exit": "True", "Value": exit[1]}), 200
