@@ -1,9 +1,8 @@
 
-def v_entry(car_data):
+def v_entry(plate,custumer_name):
 
-    def verification_plate(car_data):
+    def verification_plate(plate,custumer_name):
 
-        plate = car_data[0]
         contLetter = 0
         contNum = 0
 
@@ -25,6 +24,6 @@ def v_entry(car_data):
                 
         return False
     
-    if verification_plate(car_data):
+    if verification_plate(plate,custumer_name):
         return True
     return False

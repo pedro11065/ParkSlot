@@ -1,9 +1,9 @@
 import psycopg2
 from psycopg2 import OperationalError, InterfaceError, DatabaseError
 
-def database_create(car_data):
+def database_create(plate,custumer_name):
    
-    from .json_db import json_db_read
+    from src.model.database.json_db import json_db_read
     from ..time import time_now
 
     try:
@@ -18,8 +18,6 @@ def database_create(car_data):
         )
         times = time_now()
 
-        plate = car_data[0]
-        custumer_name = car_data[1]
         time_arrive = times[1]
         date_arrive = times[0]
         

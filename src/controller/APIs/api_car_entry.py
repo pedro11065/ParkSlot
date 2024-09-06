@@ -13,15 +13,17 @@ def login():
 
 #--------------------------------------------------------------------PROCESS
 
-    car_data = [car_data['placa'], car_data['nomecliente']]
+    car_data = [car_data['plate'], car_data['custumer_name']]
+    plate = car_data[0]
+    custumer_name = car_data[1]
 
-    data_v_entry = v_entry(car_data) #verification_entry
+    data_v_entry = v_entry(plate,custumer_name) #verification_entry
 
 #--------------------------------------------------------------------RETURN
 
     if data_v_entry == True:
 
-        if database_create(car_data):
+        if database_create(plate,custumer_name):
 
             return jsonify({"placa": "True","Server": "True"}), 200
         
