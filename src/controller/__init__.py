@@ -6,8 +6,8 @@ def create_app():
 
     #from .views.views import views
     #from .views.auth import auth
-    from .APIs.api_car_entry import api_car_entry
-    from .APIs.api_car_exit import api_car_exit
+    from .APIs.entry.api_car_entry import api_car_entry
+    from .APIs.exit.api_car_exit import api_car_exit
     
     #Blueprints essenciais para que as rotas funcionem!!
     #app.register_blueprint(views, url_prefix='/')
