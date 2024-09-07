@@ -18,13 +18,13 @@ def database_create(plate,custumer_name):
         )
         times = time_now()
 
-        time_arrive = times[1]
-        date_arrive = times[0]
+        entry_time = times[1]
+        entry_date = times[0]
         
         cur = conn.cursor()
 
         # Insert some data into an existing table
-        cur.execute("INSERT INTO parkslot_now (plate, custumer_name, time_arrive, date_arrive) VALUES (%s, %s, %s, %s)", ( plate, custumer_name, time_arrive, date_arrive ))
+        cur.execute(f"INSERT INTO parkslot_now (plate, custumer_name, entry_time, entry_date) VALUES ( '{plate}', '{custumer_name}', '{entry_time}', '{entry_date}' )")
 
         # Commit the changes
         conn.commit()

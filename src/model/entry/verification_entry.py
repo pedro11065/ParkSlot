@@ -1,7 +1,7 @@
 
-def v_entry(plate,custumer_name):
+def v_entry(plate):
 
-    def verification_plate(plate,custumer_name):
+    def verification_plate(plate):
 
         contLetter = 0
         contNum = 0
@@ -24,6 +24,6 @@ def v_entry(plate,custumer_name):
                 
         return False
     
-    if verification_plate(plate,custumer_name):
+    if verification_plate(plate):
         return True
     return False

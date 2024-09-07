@@ -11,16 +11,16 @@ def v_exit(plate,custumer_name,first_hour,next_hours,day):
         return False
     
     entry_time = db_data.get('entry_time')
-    entry_data = db_data.get('entry_data')
+    entry_date = db_data.get('entry_data')
     first_hour_price = int(first_hour)
     next_hours_price = int(next_hours)
     day_price = int(day)
 
 
-    to_pay = total_to_pay(entry_time,entry_data,first_hour_price,next_hours_price,day_price)
+    to_pay = total_to_pay(entry_time,entry_date,first_hour_price,next_hours_price,day_price)
 
     #        0     1        2         3          4          5           6
-    return True, to_pay, entry_time, entry_data
+    return True, to_pay, entry_time, entry_date
 
         
 

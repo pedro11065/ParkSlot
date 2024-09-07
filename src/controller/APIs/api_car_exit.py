@@ -14,7 +14,11 @@ def exit():
 
 #--------------------------------------------------------------------PROCESS
 
-    data_v_exit = [car_data['plate'], car_data['custumer_name'], car_data['first_hour'], car_data['next_hours'], car_data['day']]
+    data_v_exit = [car_data['plate'], 
+    car_data['custumer_name'], 
+    car_data['first_hour'], 
+    car_data['next_hours'],
+    car_data['day']]
     
     plate = data_v_exit[0]
     custumer_name = data_v_exit[1]
@@ -22,9 +26,7 @@ def exit():
     next_hours = data_v_exit[3]
     day = data_v_exit[4]
     
-
-
-    exit, to_pay, entry_time, entry_data = v_exit(plate,custumer_name,first_hour,next_hours,day) #verification_exit
+    exit, to_pay, entry_time, entry_date = v_exit(plate,custumer_name,first_hour,next_hours,day) #verification_exit
 
 #--------------------------------------------------------------------RETURN
     
@@ -32,5 +34,5 @@ def exit():
         
         return jsonify({"Exit": "False","placa": "False"}), 400
     
-    db_delete(plate,custumer_name,entry_time,entry_data)
+    db_delete(plate, custumer_name, entry_time, entry_date, to_pay)
     return jsonify({"Exit": "True", "Value": to_pay}), 200

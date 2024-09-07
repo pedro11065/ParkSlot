@@ -17,7 +17,7 @@ def login():
     plate = car_data[0]
     custumer_name = car_data[1]
 
-    data_v_entry = v_entry(plate,custumer_name) #verification_entry
+    data_v_entry = v_entry(plate) #verification_entry
 
 #--------------------------------------------------------------------RETURN
 
