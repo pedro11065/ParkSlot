@@ -5,10 +5,10 @@ def v_exit(plate,custumer_name,first_hour,next_hours,day):
 
     search_data = plate
      # 0     1         2             3              4
-    db_data = db_search(search_data) #id, plate, custumer_name, time_arrive, date_arrive
+    car, db_data = db_search(search_data) #id, plate, custumer_name, time_arrive, date_arrive
 
-    if db_data == False:
-        return False
+    if car == False:
+        return False, None, None, None, db_data
     
     entry_time = db_data.get('entry_time')
     entry_date = db_data.get('entry_data')
@@ -20,7 +20,7 @@ def v_exit(plate,custumer_name,first_hour,next_hours,day):
     to_pay = total_to_pay(entry_time,entry_date,first_hour_price,next_hours_price,day_price)
 
     #        0     1        2         3          4          5           6
-    return True, to_pay, entry_time, entry_date
+    return True, to_pay, entry_time, entry_date, None
 
         
 

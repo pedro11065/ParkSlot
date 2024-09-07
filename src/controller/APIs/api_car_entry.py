@@ -23,13 +23,15 @@ def login():
 
     if data_v_entry == True:
 
-        if database_create(plate,custumer_name):
+        entry, error = database_create(plate,custumer_name)
 
-            return jsonify({"placa": "True","Server": "True"}), 200
+        if entry:
+
+            return jsonify({"plate": True,"Server": True, "Error": error}), 200
         
-        return jsonify({"placa": "True","Server": "False"}), 400
+        return jsonify({"plate": True,"Server": False, "Error": error}), 502
     
     else:
         
-        return jsonify({"placa": "False"}), 400
+        return jsonify({"plate": False, "Server": False, "Error": "Plate isen't in database" }), 400
 

@@ -26,13 +26,27 @@ def exit():
     next_hours = data_v_exit[3]
     day = data_v_exit[4]
     
-    exit, to_pay, entry_time, entry_date = v_exit(plate,custumer_name,first_hour,next_hours,day) #verification_exit
+    exit, to_pay, entry_time, entry_date, error = v_exit(plate,custumer_name,first_hour,next_hours,day) #verification_exit
 
 #--------------------------------------------------------------------RETURN
     
-    if exit == False:
+    if exit == True: 
         
-        return jsonify({"Exit": "False","placa": "False"}), 400
+        if db_delete(plate, custumer_name, entry_time, entry_date, to_pay):
+
+            return jsonify({"Exit": True,
+                            "placa": True, 
+                            "Value": to_pay, 
+                            "Server": True, 
+                            "Error": error}), 200
+        
+        return jsonify({"Exit": False ,
+                        "placa": True,
+                        "Value": "---",
+                        "Server": False, 
+                        "Error": error}), 502
     
-    db_delete(plate, custumer_name, entry_time, entry_date, to_pay)
-    return jsonify({"Exit": "True", "Value": to_pay}), 200
+    return jsonify({"Exit": False ,
+                    "placa": False, 
+                    "Server": False, 
+                    "Error": "Car isen't registered"}), 400

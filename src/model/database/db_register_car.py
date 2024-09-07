@@ -33,13 +33,11 @@ def database_create(plate,custumer_name):
         cur.close()
         conn.close()
 
-    except OperationalError as e:
-        print(f"Erro de operação: {e}")
-    except InterfaceError as e:
-        print(f"Erro de interface: {e}")
-    except DatabaseError as e:
-        print(f"Erro de banco de dados: {e}")
-    except Exception as e:
-        print(f"Erro inesperado: {e}")
+        return True, None
 
-    return True
+    except (OperationalError, InterfaceError, DatabaseError) as e:
+
+        if "duplicar" in str(e):
+            return False, "Plate already registered"
+          
+        return False, "Conection Error"

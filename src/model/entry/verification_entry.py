@@ -26,4 +26,4 @@ def v_entry(plate):
     
     if verification_plate(plate):
         return True
-    return False
+    return False 
