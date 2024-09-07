@@ -5,12 +5,12 @@ from src.model.database.db_delete_car import db_delete
 
 api_car_exit = Blueprint('car_exit', __name__)
 
-@api_car_exit.route('/exit', methods=['POST'])
+@api_car_exit.route('/exit', methods=['POST']) #API route
 def exit():
 
 #--------------------------------------------------------------------ENTRY
 
-    car_data = request.get_json() 
+    car_data = request.get_json() #Receive the .json request
 
 #--------------------------------------------------------------------PROCESS
 
@@ -26,13 +26,13 @@ def exit():
     next_hours = data_v_exit[3]
     day = data_v_exit[4]
     
-    exit, to_pay, entry_time, entry_date, error = v_exit(plate,custumer_name,first_hour,next_hours,day) #verification_exit
+    exit, to_pay, entry_time, entry_date, error = v_exit(plate,custumer_name,first_hour,next_hours,day) #Verificate if exit request  is valid or not, return if it is or not, how much the custumer will pay, errors and when they entered
 
 #--------------------------------------------------------------------RETURN
     
     if exit == True: 
         
-        if db_delete(plate, custumer_name, entry_time, entry_date, to_pay):
+        if db_delete(plate, custumer_name, entry_time, entry_date, to_pay): #will delete the car from table "parkslot_now" and put in with more informations in "parkslot_historic"
 
             return jsonify({"Exit": True,
                             "placa": True, 
@@ -40,13 +40,13 @@ def exit():
                             "Server": True, 
                             "Error": error}), 200
         
-        return jsonify({"Exit": False ,
+        return jsonify({"Exit": False , #if plate is valid but some error ocurred when the new files were being write in "parkslot_historic"
                         "placa": True,
                         "Value": "---",
                         "Server": False, 
                         "Error": error}), 502
     
-    return jsonify({"Exit": False ,
+    return jsonify({"Exit": False , #Plate invalid
                     "placa": False, 
                     "Server": False, 
-                    "Error": "Car isen't registered"}), 400
+                    "Error": "Car isen't registered"}), 502
