@@ -1,4 +1,5 @@
 from flask import Flask
+import subprocess
 
 def create_app():
     app = Flask(__name__, static_folder='view/static', template_folder='view/templates')
@@ -10,6 +11,8 @@ def create_app():
 
     app.register_blueprint(register_request, url_prefix='/register')
     app.register_blueprint(auth_user, url_prefix='/user')
-    app.register_blueprint(index, url_prefix='/')
-    
+    app.register_blueprint(index, url_prefix='/home')
+
     return app;
+
+
