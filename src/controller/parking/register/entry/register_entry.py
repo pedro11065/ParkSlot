@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from src.model.entry.verification_entry import v_entry
-from src.model.database.db_register_car import database_create
+from src.model.database.parking.create_car import database_create
 
 def entry(data):
 

@@ -1,10 +1,29 @@
-CREATE TABLE table_user(
-user_id UUID primary key,
-fullname varchar(40),
-email varchar(50),
-birthdate date,
-password varchar(150),
-terms bool,
-creation_date date,
-creation_time time
-);
+
+CREATE TABLE parkslot_historic(
+    id UUID primary KEY,
+    plate VARCHAR(8),
+    custumer_name VARCHAR(40),
+    entry_time time,
+    entry_date date,
+    exit_time time,
+    exit_date date,
+    paid FLOAT);
+
+CREATE TABLE parkslot_now(
+    id UUID primary KEY,
+    plate VARCHAR(8),
+    custumer_name VARCHAR(40),
+    entry_time time,
+    entry_date date);
+
+CREATE TABLE users(
+    id UUID PRIMARY KEY,
+    cpnj INTEGER,
+    fullname VARCHAR(40),
+    email VARCHAR(40),
+    password VARCHAR(40)
+)
+
+
+
+

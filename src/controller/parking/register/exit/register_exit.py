@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from src.model.exit.verification_exit import v_exit
-from src.model.database.db_delete_car import db_delete
+from src.model.database.parking.delete_car import db_delete
 
 def exit(data):
 

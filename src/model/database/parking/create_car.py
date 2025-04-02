@@ -5,7 +5,7 @@ from psycopg2 import OperationalError, InterfaceError, DatabaseError
 def database_create(plate,custumer_name):
    
     from src.model.database.json_db import json_db_read
-    from ..time import time_now
+    from ...time import time_now
 
     try:
         

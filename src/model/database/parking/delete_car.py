@@ -4,7 +4,7 @@ import uuid
 def db_delete(plate,custumer_name,entry_time,entry_date,to_pay):
     
     from src.model.database.json_db import json_db_read
-    from ..time import time_now
+    from ...time import time_now
     
     try:
 

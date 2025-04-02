@@ -1,5 +1,5 @@
 
-from src.model.database.db_search_car import db_search
+from src.model.database.parking.search_car import db_search
 from src.model.exit.calculate_exit import total_to_pay
 
 def verify_values(first_hour,next_hours,day):
